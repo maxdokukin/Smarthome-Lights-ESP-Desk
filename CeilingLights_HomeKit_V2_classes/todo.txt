@@ -1,8 +1,0 @@
-1. Fix random turns off. 
-Possible: PSU overload/homekit server glitch/memory overflow
-
-2. Add eeprom support: store colors and modes
-
-3. Fix both fade switches binded to the same pin.
-
-4. Add alexa support

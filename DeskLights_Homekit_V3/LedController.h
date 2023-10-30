@@ -7,6 +7,7 @@ void printFreeStackSize();
 class LedController{
 
   //strip vars
+  private:
   Adafruit_NeoPixel * ledStrip;
   uint16_t ledNum;
 
@@ -16,7 +17,7 @@ class LedController{
 
   //color vars
   byte RGB[3]; //[0,255]
-  float hue, sat, val; //hue[0,360], sat?[0, 100]
+  float hue, sat, val; //hue[0,360], sat[0, 100]
   byte bright; //[0, 255]
 
   bool hueUpdated = false;
@@ -36,41 +37,19 @@ class LedController{
 
     ledNum = ln;
 
-    ledStrip = stp; //Adafruit_NeoPixel(ledNum, pin, NEO_GRB + NEO_KHZ800);
-
+    ledStrip = stp;
     ledStrip->begin();
-    ledStrip->setBrightness(255);
-    ledStrip->clear();
-    ledStrip->show();
-  //(HUE_START, HUE_GAP, FIRE_STEP, MIN_BRIGHT, MAX_BRIGHT, MIN_SAT, MAX_SAT)
+    
+                    //(HUE_START, HUE_GAP, FIRE_STEP, MIN_BRIGHT, MAX_BRIGHT, MIN_SAT, MAX_SAT)
     pf = new PerlinFade(ledStrip, ledNum, map(hue, 0, 360, 0, 65535), 10000, 10, 100, 255, 245, 255);
 
     memory = new MemoryController(memoryStart);
 
     eepromInit();
   }
-
-  void eepromInit(){
-
-    //read from memory
-    byte *params = memory->getParams();
-
-    //set params 
-    setRGB(params);
-    setBrightness(map(params[3], 0, 255, 0, 100.0));
-    
-    if(params[3] != 0)
-      turnOn();
-    else
-      turnOff();
-    
-    setMode(static_cast<lightsMode>(params[4]));
-  }
-
   
   void frame(){
 
-    //update leds
     if(state == ON){
 
       if(millis() - lastUpdate >= frameTime){
@@ -105,9 +84,10 @@ class LedController{
     ledStrip->show();
   }
 
-
   public:
   void setMode(lightsMode m){
+
+    if(LED_CONRTROLLER_DEBUG) { Serial.print("setMode : "); Serial.println(m); }
 
     mode = m;
     memory->writeByteEEPROM(4, static_cast<byte>(mode));
@@ -115,24 +95,28 @@ class LedController{
 
   void setHue(float h){
 
+    if(LED_CONRTROLLER_DEBUG) { Serial.print("setHue : "); Serial.println(hue); }
+
     hue = h;
     hueUpdated = true;
     updateColorFromHSV();
   }
 
-
   void setSat(float s){
 
+    if(LED_CONRTROLLER_DEBUG) { Serial.print("setSat : "); Serial.println(sat); }
+    
     sat = s;
     satUpdated = true;
     updateColorFromHSV();
   }
 
-
   //[0, 100.0] -> [0, 255]
   void setBrightness(float br){
 
     bright = map(br, 0, 100, 0, 255);
+
+    if(LED_CONRTROLLER_DEBUG) { Serial.print("setBrightness : "); Serial.println(bright); }
 
     ledStrip->setBrightness(bright);
     ledStrip->show();
@@ -141,24 +125,95 @@ class LedController{
   }
 
   void setRGB(byte * rgb){
-
-    // Serial.println("setRGB");
-
-    // printFreeStackSize();
-
-    // LOG_D("Free heap: %d, HomeKit clients: %d",
-		// 		ESP.getFreeHeap(), arduino_homekit_connected_clients_count());
+    
+    if(LED_CONRTROLLER_DEBUG) { Serial.println("setRGB : "); Serial.print("R "); Serial.println(RGB[0]); Serial.print("G "); Serial.println(RGB[1]); Serial.print("B "); Serial.println(RGB[2]); }
 
     RGB[0] = rgb[0];
     RGB[1] = rgb[1];
     RGB[2] = rgb[2];
+
     newColorReceived = true;
-    Serial.println("setRGB 2");
+    
     updateColorFromRGB();
   }
 
+  void turnOn(){
 
-  void updateColorFromHSV(){
+    if(LED_CONRTROLLER_DEBUG) { Serial.println("State set to ON"); }
+
+    state = ON;
+  }
+
+  void turnOff(){
+
+    if(LED_CONRTROLLER_DEBUG) { Serial.println("State set to OFF"); }
+
+    state = OFF;
+  }
+
+  //[0, 360]
+  float getHue(){
+
+    if(LED_CONRTROLLER_DEBUG) { Serial.print("getHue : "); Serial.println(hue); }
+
+    return hue;
+  }
+
+  //[0, 100]
+  float getSat(){
+
+    if(LED_CONRTROLLER_DEBUG) { Serial.print("getSat : "); Serial.println(sat); }
+
+    return sat;
+  }
+
+  //[0, 100]
+  int getBrightness(){
+
+    if(LED_CONRTROLLER_DEBUG) { Serial.print("getBrightness : "); Serial.println((int) (bright / 2.55)); }
+
+    return (int) (bright / 2.55);
+  }
+
+  //[ON, OFF]
+  bool getState(){
+
+    if(LED_CONRTROLLER_DEBUG) { Serial.print("getState : "); Serial.println(static_cast<bool>(state)); }
+
+    return static_cast<bool>(state);
+  }
+
+  //[SOLID_COLOR, PERLIN]
+  bool getMode(){
+
+    if(LED_CONRTROLLER_DEBUG) { Serial.print("getMode : "); Serial.println(static_cast<bool>(mode)); }
+
+    return static_cast<bool>(mode);
+  }
+
+  
+  private:
+
+  void eepromInit(){
+
+    //read from memory
+    byte *params = memory->getParams();
+
+    if(LED_CONRTROLLER_DEBUG) { Serial.println("eepromInit : "); Serial.print("P0 "); Serial.println(params[0]); Serial.print("P1 "); Serial.println(params[1]); Serial.print("P2 "); Serial.println(params[2]); Serial.print("P3 "); Serial.println(params[3]); Serial.print("P4 "); Serial.println(params[4]); }
+
+    //set params 
+    setRGB(params);
+    setBrightness(map(params[3], 0, 255, 0, 100.0));
+    
+    if(params[3] != 0)
+      turnOn();
+    else
+      turnOff();
+    
+    setMode(static_cast<lightsMode>(params[4]));
+  }
+
+   void updateColorFromHSV(){
 
     if(hueUpdated && satUpdated){
 
@@ -176,59 +231,17 @@ class LedController{
 
   void updateColorFromRGB(){
 
-    float *hsv = new float[3];
+    float hsv[3];
+    
     RGB2HSV(RGB, hsv);
-    setHue(map(hsv[0], 0, 1, 0, 360));
-    setSat(map(hsv[1], 0, 1, 0, 100));
+
+    if(LED_CONRTROLLER_DEBUG) { Serial.println("updateColorFromRGB : "); Serial.print("H : "); Serial.println(hsv[0]); Serial.print("S : "); Serial.println(hsv[1]); Serial.print("V : "); Serial.println(hsv[2]); }
+    
+    hsv[0] *= 100;
+    hue = map(hsv[0], 0, 100, 0, 360);
+    sat = 100; 
   }
 
-
-  void turnOn(){
-
-    state = ON;
-    Serial.println("State set to ON");
-  }
-
-  void turnOff(){
-
-    state = OFF;
-    Serial.println("State set to OFF");
-  }
-
-  //[0, 360]
-  float getHue(){
-
-    return hue;
-  }
-
-  //[0, 100]
-  float getSat(){
-
-    return sat;
-  }
-
-  //[0, 100]
-  int getBrightness(){
-
-    return (int) (bright / 2.55);
-  }
-
-  //[ON, OFF]
-  bool getState(){
-
-    return static_cast<bool>(state);
-  }
-
-  //[SOLID_COLOR, PERLIN]
-  bool getMode(){
-
-    return static_cast<bool>(mode);
-  }
-
-  
-
-
-  private:
   float fract(float x) { return x - int(x); }
 
   float mix(float a, float b, float t) { return a + (b - a) * t; }
@@ -261,74 +274,66 @@ class LedController{
   //HSV[0, 100.0] -> RGB[0, 255]
   void HSV2RGB(float h,float s,float v) {
 
-  int i;
-  float m, n, f;
+    int i;
+    float m, n, f;
 
-  s/=100;
-  v/=100;
+    s/=100;
+    v/=100;
 
-  if(s==0){
-    RGB[0]=RGB[1]=RGB[2]=round(v*255);
-    return;
-  }
+    if(s==0){
+      RGB[0]=RGB[1]=RGB[2]=round(v*255);
+      return;
+    }
 
-  h/=60;
-  i=floor(h);
-  f=h-i;
+    h/=60;
+    i=floor(h);
+    f=h-i;
 
-  if(!(i&1)){
-    f=1-f;
-  }
+    if(!(i&1)){
+      f=1-f;
+    }
 
-  m=v*(1-s);
-  n=v*(1-s*f);
+    m=v*(1-s);
+    n=v*(1-s*f);
 
-  switch (i) {
+    switch (i) {
 
-    case 0: case 6:
-      RGB[0]=round(v*255);
-      RGB[1]=round(n*255);
-      RGB[2]=round(m*255);
-    break;
+      case 0: case 6:
+        RGB[0]=round(v*255);
+        RGB[1]=round(n*255);
+        RGB[2]=round(m*255);
+      break;
 
-    case 1:
-      RGB[0]=round(n*255);
-      RGB[1]=round(v*255);
-      RGB[2]=round(m*255);
-    break;
+      case 1:
+        RGB[0]=round(n*255);
+        RGB[1]=round(v*255);
+        RGB[2]=round(m*255);
+      break;
 
-    case 2:
-      RGB[0]=round(m*255);
-      RGB[1]=round(v*255);
-      RGB[2]=round(n*255);
-    break;
+      case 2:
+        RGB[0]=round(m*255);
+        RGB[1]=round(v*255);
+        RGB[2]=round(n*255);
+      break;
 
-    case 3:
-      RGB[0]=round(m*255);
-      RGB[1]=round(n*255);
-      RGB[2]=round(v*255);
-    break;
+      case 3:
+        RGB[0]=round(m*255);
+        RGB[1]=round(n*255);
+        RGB[2]=round(v*255);
+      break;
 
-    case 4:
-      RGB[0]=round(n*255);
-      RGB[1]=round(m*255);
-      RGB[2]=round(v*255);
-    break;
+      case 4:
+        RGB[0]=round(n*255);
+        RGB[1]=round(m*255);
+        RGB[2]=round(v*255);
+      break;
 
-    case 5:
-      RGB[0]=round(v*255);
-      RGB[1]=round(m*255);
-      RGB[2]=round(n*255);
-    break;
+      case 5:
+        RGB[0]=round(v*255);
+        RGB[1]=round(m*255);
+        RGB[2]=round(n*255);
+      break;
     }
   }
 };
-
-
-void printFreeStackSize() {
-
-  uint32_t free_stack = ESP.getFreeContStack();
-  Serial.print("Free stack: ");
-  Serial.println(free_stack);
-}
 

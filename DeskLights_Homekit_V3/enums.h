@@ -6,6 +6,6 @@ enum lightsMode{
 
 enum lightsState{
 
-  ON,
-  OFF
+  OFF,
+  ON
 };

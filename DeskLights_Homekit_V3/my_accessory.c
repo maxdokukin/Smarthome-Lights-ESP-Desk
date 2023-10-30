@@ -14,18 +14,20 @@ void my_accessory_identify(homekit_value_t _value) {
 }
 
 // format: bool; HAP section 9.70; write the .setter function to get the switch-event sent from iOS Home APP.
+//desk perlin switch
 homekit_characteristic_t cha1_switch_on = HOMEKIT_CHARACTERISTIC_(ON, false);
 homekit_characteristic_t cha1_switch_name = HOMEKIT_CHARACTERISTIC_(NAME, "Switch 1");
+//ceiling perlin switch
 homekit_characteristic_t cha2_switch_on = HOMEKIT_CHARACTERISTIC_(ON, false);
 homekit_characteristic_t cha2_switch_name = HOMEKIT_CHARACTERISTIC_(NAME, "Switch 2");
 
-//led
+//desk leds
 homekit_characteristic_t cha1_on = HOMEKIT_CHARACTERISTIC_(ON, false);
 homekit_characteristic_t cha1_name = HOMEKIT_CHARACTERISTIC_(NAME, "Desk Lights");
 homekit_characteristic_t cha1_bright = HOMEKIT_CHARACTERISTIC_(BRIGHTNESS, 100);
 homekit_characteristic_t cha1_sat = HOMEKIT_CHARACTERISTIC_(SATURATION, (float) 0);
 homekit_characteristic_t cha1_hue = HOMEKIT_CHARACTERISTIC_(HUE, (float) 180);
-
+//ceiling leds
 homekit_characteristic_t cha2_on = HOMEKIT_CHARACTERISTIC_(ON, false);
 homekit_characteristic_t cha2_name = HOMEKIT_CHARACTERISTIC_(NAME, "Ceiling Lights");
 homekit_characteristic_t cha2_bright = HOMEKIT_CHARACTERISTIC_(BRIGHTNESS, 100);
@@ -44,13 +46,13 @@ homekit_accessory_t *accessories[] = {
             HOMEKIT_CHARACTERISTIC(MANUFACTURER, "XeWe Industries"),
             HOMEKIT_CHARACTERISTIC(SERIAL_NUMBER, "17-19-66-69"),
             HOMEKIT_CHARACTERISTIC(MODEL, "ESP8266/ESP32"),
-            HOMEKIT_CHARACTERISTIC(FIRMWARE_REVISION, "2.0"),
+            HOMEKIT_CHARACTERISTIC(FIRMWARE_REVISION, "3.0"),
             HOMEKIT_CHARACTERISTIC(IDENTIFY, my_accessory_identify),
             NULL
         }),
         NULL
     }),
-    HOMEKIT_ACCESSORY(.id=2, .category=homekit_accessory_category_lightbulb, .services=(homekit_service_t*[]) {
+    HOMEKIT_ACCESSORY(.id=2, .category=homekit_accessory_category_lightbulb, .services=(homekit_service_t*[]) { 
           HOMEKIT_SERVICE(ACCESSORY_INFORMATION, .characteristics=(homekit_characteristic_t*[]) {
               HOMEKIT_CHARACTERISTIC(NAME, "Desk Lights"),
               HOMEKIT_CHARACTERISTIC(IDENTIFY, my_accessory_identify),
@@ -67,7 +69,7 @@ homekit_accessory_t *accessories[] = {
           NULL
       }),
 
-    HOMEKIT_ACCESSORY(.id=3, .category=homekit_accessory_category_switch, .services=(homekit_service_t*[]) {
+    HOMEKIT_ACCESSORY(.id=3, .category=homekit_accessory_category_switch, .services=(homekit_service_t*[]) { 
         HOMEKIT_SERVICE(ACCESSORY_INFORMATION, .characteristics=(homekit_characteristic_t*[]) {
             HOMEKIT_CHARACTERISTIC(NAME, "Desk Lights Fade"),
             HOMEKIT_CHARACTERISTIC(IDENTIFY, my_accessory_identify),
@@ -118,4 +120,3 @@ homekit_server_config_t config = {
 		.accessories = accessories,
 		.password = "111-11-111"
 };
-

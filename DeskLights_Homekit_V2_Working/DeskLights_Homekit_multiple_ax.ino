@@ -1,21 +1,3 @@
-/*
- * Example05_WS2812_Neopixel.ino
- *
- *  Created on: 2020-10-01
- *      Author: Juergen Fink
- *	Thanks to all the other helpful people commenting here.
- *
- * This example allows to change brightness and color of a connected neopixel strip/matrix
- *
- * You should:
- * 1. read and use the Example01_TemperatureSensor with detailed comments
- *    to know the basic concept and usage of this library before other examples。
- * 2. erase the full flash or call homekit_storage_reset() in setup()
- *    to remove the previous HomeKit pairing storage and
- *    enable the pairing with the new accessory of this new HomeKit example.
- */
-
-
 #include <Arduino.h>
 #include <arduino_homekit_server.h>
 #include "wifi_info.h"
@@ -27,6 +9,7 @@
 #define DESK_LED_NUM 61
 #define CEILING_LED_PIN D3
 #define CEILING_LED_NUM 151
+
 Adafruit_NeoPixel deskStrip = Adafruit_NeoPixel(DESK_LED_NUM, DESK_LED_PIN, NEO_GRB + NEO_KHZ800); 
 Adafruit_NeoPixel ceilingStrip = Adafruit_NeoPixel(CEILING_LED_NUM, CEILING_LED_PIN, NEO_GRB + NEO_KHZ800); 
 

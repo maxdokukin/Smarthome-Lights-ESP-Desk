@@ -8,10 +8,8 @@ class PerlinFade{
   Adafruit_NeoPixel * ledStrip;
   uint16_t ledNum;
 
-
   uint16_t hueStart, hueGap, halfHueGap;
   byte fireStep, minBright, maxBright, minSat, maxSat;
-
 
   public: 
   //(HUE_START, HUE_GAP, FIRE_STEP, MIN_BRIGHT, MAX_BRIGHT, MIN_SAT, MAX_SAT)
@@ -29,7 +27,6 @@ class PerlinFade{
     maxSat = mas;
     halfHueGap = hueGap / 2;
   }
-  
   
   void frame(){
 
@@ -57,6 +54,4 @@ class PerlinFade{
 
      
   }
-
-  
 };

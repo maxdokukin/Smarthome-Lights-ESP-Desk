@@ -49,9 +49,5 @@ class PerlinFade{
              constrain(map(val, 0, 255, maxSat, minSat), 0, 255),       // S
              constrain(map(val, 0, 255, minBright, maxBright), 0, 255)  // V   
            );
-           
-    //return strpixelsipski.ColorHSV(hueStart + map(val, 0, 255, 0, hueGap), 255, 255);
-
-     
   }
 };

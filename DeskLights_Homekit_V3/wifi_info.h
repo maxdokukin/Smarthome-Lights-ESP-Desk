@@ -1,10 +1,3 @@
-/*
- * wifi_info.h
- *
- *  Created on: 2020-05-15
- *      Author: Mixiaoxiao (Wang Bin)
- */
-
 #ifndef WIFI_INFO_H_
 #define WIFI_INFO_H_
 
@@ -18,6 +11,7 @@ const char *ssid = "The Grad Resident";
 const char *password = "DecoratingLandsFace";
 
 void wifi_connect() {
+
 	WiFi.persistent(false);
 	WiFi.mode(WIFI_STA);
 	WiFi.setAutoReconnect(true);
@@ -31,4 +25,4 @@ void wifi_connect() {
 	Serial.printf("WiFi connected, IP: %s\n", WiFi.localIP().toString().c_str());
 }
 
-#endif /* WIFI_INFO_H_ */
+#endif
