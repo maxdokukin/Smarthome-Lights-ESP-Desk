@@ -12,13 +12,14 @@ class MemoryController{
 
   byte * getParams(){
 
-    byte *params = new byte[5];
+    byte *params = new byte[6];
 
     params[0] = readByteEEPROM(0);//r
     params[1] = readByteEEPROM(1);//g
     params[2] = readByteEEPROM(2);//b
     params[3] = readByteEEPROM(3);//brightness
     params[4] = readByteEEPROM(4);//mode
+    params[5] = readByteEEPROM(5);//on/off
 
     return params;
   }

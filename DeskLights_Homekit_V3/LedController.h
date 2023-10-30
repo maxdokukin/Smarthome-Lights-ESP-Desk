@@ -141,13 +141,14 @@ class LedController{
 
     if(LED_CONRTROLLER_DEBUG) { Serial.println("State set to ON"); }
 
+    memory->writeByteEEPROM(5, 1);
     state = ON;
   }
 
   void turnOff(){
 
     if(LED_CONRTROLLER_DEBUG) { Serial.println("State set to OFF"); }
-
+    memory->writeByteEEPROM(5, 0);
     state = OFF;
   }
 
@@ -205,10 +206,10 @@ class LedController{
     setRGB(params);
     setBrightness(map(params[3], 0, 255, 0, 100.0));
     
-    if(params[3] != 0)
-      turnOn();
-    else
+    if(params[5] == 0)
       turnOff();
+    else
+      turnOn();
     
     setMode(static_cast<lightsMode>(params[4]));
   }

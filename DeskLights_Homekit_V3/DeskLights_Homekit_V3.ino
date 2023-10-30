@@ -30,7 +30,7 @@ void setup() {
   EEPROM.begin(4096);
 
   deskLights = new LedController(&deskStrip, DESK_LED_NUM, 1500);
-  ceilingLights = new LedController(&ceilingStrip, CEILING_LED_NUM, 1505);
+  ceilingLights = new LedController(&ceilingStrip, CEILING_LED_NUM, 1506);
 
   Serial.begin(9600);
 
