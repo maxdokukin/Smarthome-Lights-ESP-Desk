@@ -15,24 +15,24 @@ void my_accessory_identify(homekit_value_t _value) {
 
 // format: bool; HAP section 9.70; write the .setter function to get the switch-event sent from iOS Home APP.
 //desk perlin switch
-homekit_characteristic_t cha1_switch_on = HOMEKIT_CHARACTERISTIC_(ON, false);
-homekit_characteristic_t cha1_switch_name = HOMEKIT_CHARACTERISTIC_(NAME, "Switch 1");
+homekit_characteristic_t desk_switch_on = HOMEKIT_CHARACTERISTIC_(ON, false);
+homekit_characteristic_t desk_switch_name = HOMEKIT_CHARACTERISTIC_(NAME, "Switch 1");
 //ceiling perlin switch
-homekit_characteristic_t cha2_switch_on = HOMEKIT_CHARACTERISTIC_(ON, false);
-homekit_characteristic_t cha2_switch_name = HOMEKIT_CHARACTERISTIC_(NAME, "Switch 2");
+homekit_characteristic_t ceiling_switch_on = HOMEKIT_CHARACTERISTIC_(ON, false);
+homekit_characteristic_t ceiling_switch_name = HOMEKIT_CHARACTERISTIC_(NAME, "Switch 2");
 
 //desk leds
-homekit_characteristic_t cha1_on = HOMEKIT_CHARACTERISTIC_(ON, false);
-homekit_characteristic_t cha1_name = HOMEKIT_CHARACTERISTIC_(NAME, "Desk Lights");
-homekit_characteristic_t cha1_bright = HOMEKIT_CHARACTERISTIC_(BRIGHTNESS, 100);
-homekit_characteristic_t cha1_sat = HOMEKIT_CHARACTERISTIC_(SATURATION, (float) 0);
-homekit_characteristic_t cha1_hue = HOMEKIT_CHARACTERISTIC_(HUE, (float) 180);
+homekit_characteristic_t desk_on = HOMEKIT_CHARACTERISTIC_(ON, false);
+homekit_characteristic_t desk_name = HOMEKIT_CHARACTERISTIC_(NAME, "Desk Lights");
+homekit_characteristic_t desk_bright = HOMEKIT_CHARACTERISTIC_(BRIGHTNESS, 100);
+homekit_characteristic_t desk_sat = HOMEKIT_CHARACTERISTIC_(SATURATION, (float) 0);
+homekit_characteristic_t desk_hue = HOMEKIT_CHARACTERISTIC_(HUE, (float) 180);
 //ceiling leds
-homekit_characteristic_t cha2_on = HOMEKIT_CHARACTERISTIC_(ON, false);
-homekit_characteristic_t cha2_name = HOMEKIT_CHARACTERISTIC_(NAME, "Ceiling Lights");
-homekit_characteristic_t cha2_bright = HOMEKIT_CHARACTERISTIC_(BRIGHTNESS, 100);
-homekit_characteristic_t cha2_sat = HOMEKIT_CHARACTERISTIC_(SATURATION, (float) 0);
-homekit_characteristic_t cha2_hue = HOMEKIT_CHARACTERISTIC_(HUE, (float) 180);
+homekit_characteristic_t ceiling_on = HOMEKIT_CHARACTERISTIC_(ON, false);
+homekit_characteristic_t ceiling_name = HOMEKIT_CHARACTERISTIC_(NAME, "Ceiling Lights");
+homekit_characteristic_t ceiling_bright = HOMEKIT_CHARACTERISTIC_(BRIGHTNESS, 100);
+homekit_characteristic_t ceiling_sat = HOMEKIT_CHARACTERISTIC_(SATURATION, (float) 0);
+homekit_characteristic_t ceiling_hue = HOMEKIT_CHARACTERISTIC_(HUE, (float) 180);
 
 homekit_accessory_t *accessories[] = {
     HOMEKIT_ACCESSORY(.id=1, .category=homekit_accessory_category_bridge, .services=(homekit_service_t*[]) {
@@ -59,11 +59,11 @@ homekit_accessory_t *accessories[] = {
               NULL
           }),
           HOMEKIT_SERVICE(LIGHTBULB, .primary=true, .characteristics=(homekit_characteristic_t*[]) {
-              &cha1_on,
-              &cha1_name,
-              &cha1_bright,
-              &cha1_sat,
-              &cha1_hue,
+              &desk_on,
+              &desk_name,
+              &desk_bright,
+              &desk_sat,
+              &desk_hue,
               NULL
           }),
           NULL
@@ -76,8 +76,8 @@ homekit_accessory_t *accessories[] = {
             NULL
         }),
 		HOMEKIT_SERVICE(SWITCH, .primary=true, .characteristics=(homekit_characteristic_t*[]){
-			&cha1_switch_on,
-			&cha1_switch_name,
+			&desk_switch_on,
+			&desk_switch_name,
 			NULL
 		}),
         NULL
@@ -89,11 +89,11 @@ homekit_accessory_t *accessories[] = {
               NULL
           }),
           HOMEKIT_SERVICE(LIGHTBULB, .primary=true, .characteristics=(homekit_characteristic_t*[]) {
-              &cha2_on,
-              &cha2_name,
-              &cha2_bright,
-              &cha2_sat,
-              &cha2_hue,
+              &ceiling_on,
+              &ceiling_name,
+              &ceiling_bright,
+              &ceiling_sat,
+              &ceiling_hue,
               NULL
           }),
           NULL
@@ -106,8 +106,8 @@ homekit_accessory_t *accessories[] = {
             NULL
         }),
 		HOMEKIT_SERVICE(SWITCH, .primary=true, .characteristics=(homekit_characteristic_t*[]){
-			&cha2_switch_on,
-			&cha2_switch_name,
+			&ceiling_switch_on,
+			&ceiling_switch_name,
 			NULL
 		}),
         NULL
