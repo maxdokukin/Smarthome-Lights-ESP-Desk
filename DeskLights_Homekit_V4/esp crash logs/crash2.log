@@ -1,0 +1,39 @@
+>>> [  60775] HomeKit: [Client 1073688564] Pair Verify Step 2/2
+>>> [  60840] HomeKit: [Client 1073688564] Found pairing with 6E9EF390-9533-43C2-97C8-C37D3B4CAB45
+>>> [  60955] HomeKit: Call ge_double_scalarmult_vartime_lowmem in ge_low_mem.c
+>>> [  61757] HomeKit: [Client 1073688564] Verification successful, secure session established
+>>> [  61854] HomeKit: Free heap: 33336
+>>> [  61948] HomeKit: [Client 1073688564] Get Accessories
+>>> [  62207] HomeKit: Got new client: local 172.16.30.133:5556, remote 172.16.30.139:61869
+>>> [  62302] HomeKit: [Client 1073688628] Pair Verify Step 1/2
+>>> [  62621] HomeKit: Free heap: 31704
+>>> [  62898] HomeKit: [Client 1073688628] Pair Verify Step 2/2
+>>> [  62964] HomeKit: [Client 1073688628] Found pairing with 6E9EF390-9533-43C2-97C8-C37D3B4CAB45
+>>> [  63079] HomeKit: Call ge_double_scalarmult_vartime_lowmem in ge_low_mem.c
+>>> [  63881] HomeKit: [Client 1073688628] Verification successful, secure session established
+>>> [  63978] HomeKit: Free heap: 31896
+>>> [  64075] HomeKit: [Client 1073688628] Get Accessories
+>>> [  67497] HomeKit: [Client 1073688564] Disconnected!
+>>> [  67555] HomeKit: [Client 1073688564] Closing client connection
+>>> [  69669] HomeKit: [Client 1073688628] Disconnected!
+>>> [  69727] HomeKit: [Client 1073688628] Closing client connection
+>>> [ 120784] HomeKit: Got new client: local 172.16.30.133:5556, remote 172.16.30.167:52053
+>>> [ 120880] HomeKit: [Client 1073688492] Pair Verify Step 1/2
+>>> [ 121199] HomeKit: Free heap: 33344
+>>> [ 121291] HomeKit: [Client 1073688492] Pair Verify Step 2/2
+>>> [ 121356] HomeKit: [Client 1073688492] Found pairing with 6E9EF390-9533-43C2-97C8-C37D3B4CAB45
+>>> [ 121471] HomeKit: Call ge_double_scalarmult_vartime_lowmem in ge_low_mem.c
+>>> [ 122273] HomeKit: [Client 1073688492] Verification successful, secure session established
+>>> [ 122370] HomeKit: Free heap: 33208
+>>> [ 122546] HomeKit: [Client 1073688492] Get Accessories
+>>> [ 122758] HomeKit: Got new client: local 172.16.30.133:5556, remote 172.16.30.139:61870
+>>> [ 122853] HomeKit: [Client 1073688364] Pair Verify Step 1/2
+>>> [ 123172] HomeKit: Free heap: 31680
+>>> [ 123251] HomeKit: [Client 1073688364] Pair Verify Step 2/2
+>>> [ 123317] HomeKit: [Client 1073688364] Found pairing with 6E9EF390-9533-43C2-97C8-C37D3B4CAB45
+>>> [ 123432] HomeKit: Call ge_double_scalarmult_vartime_lowmem in ge_low_mem.c
+>>> [ 124234] HomeKit: [Client 1073688364] Verification successful, secure session established
+>>> [ 124331] HomeKit: Free heap: 31616
+>>> [ 124495] HomeKit: [Client 1073688364] Get Accessories
+!!! [ 125391] HomeKit: [Client 1073688364] socket.write, data_size=524, write_size=7
+>>> [ 125478] HomeKit: [Client 1073688364] Closing client connection

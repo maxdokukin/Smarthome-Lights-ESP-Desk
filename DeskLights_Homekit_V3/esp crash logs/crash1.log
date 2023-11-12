@@ -1,0 +1,168 @@
+>>> [ 721474] HomeKit: [Client 1073689644] Get Accessories
+>>> [ 726965] HomeKit: [Client 1073689644] Disconnected!
+>>> [ 727022] HomeKit: [Client 1073689644] Closing client connection
+>>> [ 731595] HomeKit: Got new client: local 172.16.30.133:5556, remote 172.16.30.139:61807
+>>> [ 731691] HomeKit: [Client 1073689540] Pair Verify Step 1/2
+>>> [ 732010] HomeKit: Free heap: 33000
+>>> [ 732217] HomeKit: [Client 1073689540] Pair Verify Step 2/2
+>>> [ 732283] HomeKit: [Client 1073689540] Found pairing with 6E9EF390-9533-43C2-97C8-C37D3B4CAB45
+>>> [ 732397] HomeKit: Call ge_double_scalarmult_vartime_lowmem in ge_low_mem.c
+>>> [ 733199] HomeKit: [Client 1073689540] Verification successful, secure session established
+>>> [ 733296] HomeKit: Free heap: 33168
+>>> [ 733506] HomeKit: [Client 1073689540] Get Accessories
+>>> [ 738844] HomeKit: [Client 1073689540] Disconnected!
+>>> [ 738902] HomeKit: [Client 1073689540] Closing client connection
+>>> [ 749529] HomeKit: Got new client: local 172.16.30.133:5556, remote 172.16.30.139:61808
+>>> [ 749624] HomeKit: [Client 1073689644] Pair Verify Step 1/2
+>>> [ 749943] HomeKit: Free heap: 33152
+>>> [ 750068] HomeKit: [Client 1073689644] Pair Verify Step 2/2
+>>> [ 750134] HomeKit: [Client 1073689644] Found pairing with 6E9EF390-9533-43C2-97C8-C37D3B4CAB45
+>>> [ 750249] HomeKit: Call ge_double_scalarmult_vartime_lowmem in ge_low_mem.c
+>>> [ 751050] HomeKit: [Client 1073689644] Verification successful, secure session established
+>>> [ 751147] HomeKit: Free heap: 32968
+>>> [ 751224] HomeKit: [Client 1073689644] Get Accessories
+>>> [ 756778] HomeKit: [Client 1073689644] Disconnected!
+>>> [ 756836] HomeKit: [Client 1073689644] Closing client connection
+>>> [ 766079] HomeKit: Got new client: local 172.16.30.133:5556, remote 172.16.30.167:51971
+>>> [ 766175] HomeKit: [Client 1073689644] Pair Verify Step 1/2
+>>> [ 766493] HomeKit: Free heap: 33080
+>>> [ 766568] HomeKit: [Client 1073689644] Pair Verify Step 2/2
+>>> [ 766634] HomeKit: [Client 1073689644] Found pairing with 6E9EF390-9533-43C2-97C8-C37D3B4CAB45
+>>> [ 766749] HomeKit: Call ge_double_scalarmult_vartime_lowmem in ge_low_mem.c
+>>> [ 767550] HomeKit: [Client 1073689644] Verification successful, secure session established
+>>> [ 767647] HomeKit: Free heap: 33168
+>>> [ 767724] HomeKit: [Client 1073689644] Get Accessories
+>>> [ 770853] HomeKit: Got new client: local 172.16.30.133:5556, remote 172.16.30.139:61809
+>>> [ 770949] HomeKit: [Client 1073690396] Pair Verify Step 1/2
+>>> [ 771267] HomeKit: Free heap: 31480
+>>> [ 771346] HomeKit: [Client 1073690396] Pair Verify Step 2/2
+>>> [ 771411] HomeKit: [Client 1073690396] Found pairing with 6E9EF390-9533-43C2-97C8-C37D3B4CAB45
+>>> [ 771526] HomeKit: Call ge_double_scalarmult_vartime_lowmem in ge_low_mem.c
+>>> [ 772327] HomeKit: [Client 1073690396] Verification successful, secure session established
+>>> [ 772425] HomeKit: Free heap: 31592
+>>> [ 772690] HomeKit: [Client 1073690396] Get Accessories
+!!! [ 773260] HomeKit: [Client 1073690396] socket.write, data_size=533, write_size=417
+>>> [ 773349] HomeKit: [Client 1073690396] Closing client connection
+!!! [ 773726] HomeKit: [Client 0] The socket is null! (or is closed)
+
+--------------- CUT HERE FOR EXCEPTION DECODER ---------------
+
+Exception (9):
+epc1=0x4021a0ef epc2=0x00000000 epc3=0x00000000 excvaddr=0x6969220a depc=0x00000000
+
+>>>stack>>>
+
+ctx: cont
+sp: 3ffff7b0 end: 3fffffd0 offset: 0150
+3ffff900:  3ffffd64 00000002 00000000 00004bc6 
+3ffff910:  00000000 00000001 3fff3fcc 00000000  
+3ffff920:  3fff3fcc 3fff43cc 00000204 4021a2c0  
+3ffff930:  3ffff942 3ffffb46 69d9c9a4 00000002  
+3ffff940:  d9330204 3dd34608 8e1b8244 3292ae90  
+3ffff950:  0add02dc c7393bd1 4449c4a2 3faff0a8  
+3ffff960:  a8c78f75 58184b2b 53c0e502 afe0cf4e  
+3ffff970:  bd381477 ada6aed6 613b8a0d b472f849  
+3ffff980:  ad40384f ccf209e9 ab953048 d7158c74  
+3ffff990:  024e8bc0 f0e95eb9 ef08f42d 762548a1  
+3ffff9a0:  a61413de 3f657afe 3f9e9bdb 709285f5  
+3ffff9b0:  ca8b116d eee3c856 360e5eb1 ccbf5617  
+3ffff9c0:  c032349f 0983d484 cd0f622e 38202b1f  
+3ffff9d0:  c4aff69f 3ad4426f 06f5829b 6ce6abac  
+3ffff9e0:  3769ba73 0708c7c2 ded4b0a3 ec5f28b3  
+3ffff9f0:  103e821d c0f008b9 03a8ce5d 6f971e7a  
+3ffffa00:  fef75b8b 1dab1516 e7ccb057 9e89d1b9  
+3ffffa10:  e6a43961 ec6dd9c8 b969941d f6c923a6  
+3ffffa20:  817945aa e05ab2b0 2642234a 85b9af13  
+3ffffa30:  1ab1e9ad 74cba400 25fc0fc0 8581cd57  
+3ffffa40:  53b033f2 e639aa5f f68b8f54 74a741c6  
+3ffffa50:  3dd057d4 58b3462f c8b8dc6b 421f5a8c  
+3ffffa60:  a4824e39 04978736 e5a9f388 4801eed6  
+3ffffa70:  5af55379 7b83f655 6c795fc6 7d78df3e  
+3ffffa80:  15f8bf29 998d5357 53a43878 12452447  
+3ffffa90:  caf17a53 4c26cb75 8c20a942 a9c6bdc5  
+3ffffaa0:  ab3c0452 51edf9ec d5ef54eb 2a6a15d3  
+3ffffab0:  30f6659b 1b5ee28a 8f1c945d d48abc27  
+3ffffac0:  6dc1b95b 1e954b27 47417839 110c34ed  
+3ffffad0:  614187de 3c279a10 95a0056b ce37016d  
+3ffffae0:  544de77d ef03744b fc14111b 155db008  
+3ffffaf0:  fa65c19d abc78692 eb6f2bbb 55e81fdb  
+3ffffb00:  6410daa5 5303d2ea 287e7e9e 5c739651  
+3ffffb10:  4010a8c8 1eb4fd0a 4c830778 91277d41  
+3ffffb20:  5112341d f043dd76 916d497d cef5a282  
+3ffffb30:  eb1e1d2b 14b05792 57c4f700 0664e927  
+3ffffb40:  b0f1f1d7 8de02682 8063e0ae 5a3a5221
+3ffffb50:  59501d67 00003594 00000010 00000000  
+3ffffb60:  00000001 004d0000 0000000a 3ffe8368  
+3ffffb70:  00000000 80000000 00000000 0000001b  
+3ffffb80:  00000800 00000009 00000800 3ffe8368  
+3ffffb90:  00000000 00000000 3ffffd00 4022f9c0  
+3ffffba0:  3ffffc90 3ffffc93 00000000 00000002  
+3ffffbb0:  00000000 00000002 4022adb1 3ffe8368  
+3ffffbc0:  00000003 00000000 3ffffd00 4022f9c0  
+3ffffbd0:  4022f8fc 3ffffc90 00000003 00000000  
+3ffffbe0:  3ffe9a01 3ffffcd3 00000000 3ffffd00  
+3ffffbf0:  3ffe9afe 00000000 3ffffc50 4022aee0  
+3ffffc00:  00000003 3ffe8368 3ffffd40 3ffe8368  
+3ffffc10:  00000002 3ffe8368 3ffffd00 4022f9c0  
+3ffffc20:  00000000 3ffe9afe 00000002 00000000  
+3ffffc30:  3ffe9a01 3ffe8368 3ffffc90 3ffe9b00  
+3ffffc40:  3ffe9afe 3ffe8368 3ffffd00 4022fbbd  
+3ffffc50:  00000000 ffffffff ffffffff 00000000  
+3ffffc60:  00000003 00000005 00302078 4022f9c0  
+3ffffc70:  4022f8fc 3ffea6f6 00000001 3ffea1ac  
+3ffffc80:  3ffea1ab 3ffe8368 3ffffd40 4022fbbd  
+3ffffc90:  00646631 00007806 00000000 00000000  
+3ffffca0:  00000006 00000008 00000000 3ffe8368  
+3ffffcb0:  3ffffd90 3ffffd80 00000010 00000002  
+3ffffcc0:  3ffffd90 3ffffd80 0000000c 00000003  
+3ffffcd0:  00000002 3ffffde0 00000008 3ffea1b2  
+3ffffce0:  3ffffe10 3ffffde0 00000000 3fff4724  
+3ffffcf0:  000001fd 3ffe8368 00000205 4022b5f9  
+3ffffd00:  3fff3fd1 3ffffe00 000001ff ffff0208  
+3ffffd10:  3fff3fcc 00000204 00000008 4022ce59  
+3ffffd20:  00000001 3ffffe30 00000033 3ffffe30  
+3ffffd30:  3ffffe00 3ffe8368 00000003 4022ce59  
+3ffffd40:  3fff4923 3ffe8368 00000000 ffff0208  
+3ffffd50:  00004921 00040000 00000000 ffff0000  
+3ffffd60:  00000214 00000204 3ffffd90 3ffffd80  
+3ffffd70:  00000204 3fff3fcc 3ffffd40 3ffffd40  
+3ffffd80:  3ffffe50 3ffe8368 00000046 3fff4724  
+3ffffd90:  000001fd 00000005 3fff3fcc 4021a304
+3ffffda0:  3ffffe10 00000005 3fff3fcc 4021b566  
+3ffffdb0:  3fff3fcc 00000008 3fff3c2c 4022ce95  
+3ffffdc0:  3ffffe30 3ffffe00 00000008 3ffffe30  
+3ffffdd0:  3ffffe00 00000008 3fff3c2c 40216ebe  
+3ffffde0:  3fff3fcc 00000008 3fff3c2c 40205496  
+3ffffdf0:  3ffffe30 3ffffe00 00000008 40205485  
+3ffffe00:  3ffffe40 3ffffe10 3ffe9a01 00000001  
+3ffffe10:  3fff4921 00000001 00000000 00000004  
+3ffffe20:  3ffea1a8 00000001 3fff3c2c 40205782  
+3ffffe30:  3ffea6f6 3fff3c2c 3ffffe50 3ffe9d0c  
+3ffffe40:  00000000 3ffe8978 3fff3c2c 402059ac  
+3ffffe50:  3ffe9a01 3fff3c2c 3ffffe70 402056e0  
+3ffffe60:  3fff48de 00000001 3fff3c2c 40219113  
+3ffffe70:  3fff48e0 00000001 3fff3c2c 40205782  
+3ffffe80:  3ffea1ad 3fff3c2c 3ffffea0 3ffe88b0  
+3ffffe90:  3fff3fcc 3ffe88e0 3fff3c2c 3ffe88b0  
+3ffffea0:  3fff3fcc 3ffe88f8 3fff3c2c 3ffe88b0  
+3ffffeb0:  3fff3fcc 3ffe88f8 3fff3c2c 4021b94b  
+3ffffec0:  3ffe85f8 3ffe8978 c0630cbc c55e7b9d  
+3ffffed0:  3fff3fdc 00000002 00000000 00000000  
+3ffffee0:  3fff3046 3fff43cc 3fff3fcc 4021d281  
+3ffffef0:  3fff3014 00000043 3fff4404 40204aa8  
+3fffff00:  3fff3004 3fff0284 00000000 00000000  
+3fffff10:  00000000 00000000 00000000 00000000  
+3fffff20:  3fff3047 00000001 3fff4455 00000043  
+3fffff30:  00000021 00000030 3fff3026 00000000  
+3fffff40:  3fffdad0 00000055 00000020 3fff02bc  
+3fffff50:  3fff3004 3fff3004 3fff3fcc 4021a08d  
+3fffff60:  00000043 00000000 3fff3128 0000000a  
+3fffff70:  00000043 0000000a 000bca47 3fff0568  
+3fffff80:  3fffdad0 3fff0304 3fff053c 3fff0568  
+3fffff90:  3fffdad0 3fff2a24 3fff43cc 4021bfc1  
+3fffffa0:  3fffdad0 00000000 3fff053c 40218890  
+3fffffb0:  00000000 00000000 00000001 40225aa0  
+3fffffc0:  feefeffe feefeffe 3fffdab0 401003d9  
+<<<stack<<<
+
+--------------- CUT HERE FOR EXCEPTION DECODER ---------------
