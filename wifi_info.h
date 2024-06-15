@@ -8,7 +8,7 @@
 #endif
 
 // Wi-Fi network credentials
-const char *ssid = "The Grad Resident";
+const char *ssid = "KGB Headquarters";
 const char *password = "DecoratingLandsFace";
 
 // Function to connect to Wi-Fi
