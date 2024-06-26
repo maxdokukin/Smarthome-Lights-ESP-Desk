@@ -10,7 +10,7 @@
 #include <Adafruit_NeoPixel.h>
 #define DESK_LED_PIN D1
 #define DESK_LED_NUM 61
-#define CEILING_LED_PIN D3
+#define CEILING_LED_PIN D2
 #define CEILING_LED_NUM 276
 
 Adafruit_NeoPixel deskStrip = Adafruit_NeoPixel(DESK_LED_NUM, DESK_LED_PIN, NEO_GRB + NEO_KHZ800); 
