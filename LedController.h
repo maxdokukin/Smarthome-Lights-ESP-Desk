@@ -146,6 +146,13 @@ class LedController{
     
     sat = s;
     satUpdated = true;
+
+    //NEW CODE
+    if(s < 35.0 && mode == PERLIN){
+      setMode(SOLID_COLOR)
+    }
+    //NEW CODE
+
     updateColorFromHSV();
   }
 
@@ -172,6 +179,12 @@ class LedController{
 
     if(LED_CONRTROLLER_DEBUG) { Serial.println("setRGB : "); Serial.print("R "); Serial.println(RGB[0]); Serial.print("G "); Serial.println(RGB[1]); Serial.print("B "); Serial.println(RGB[2]); }
     
+    //NEW CODE
+    if((RGB[0] == RGB[1] == RGB[2]) && mode == PERLIN){
+      setMode(SOLID_COLOR)
+    }
+    //NEW CODE
+
     updateColorFromRGB();
   }
 
@@ -186,6 +199,12 @@ class LedController{
     RGB[2] = (rgb & 0xFF);
 
     if(LED_CONRTROLLER_DEBUG) { Serial.println("setRGB : "); Serial.print("R "); Serial.println(RGB[0]); Serial.print("G "); Serial.println(RGB[1]); Serial.print("B "); Serial.println(RGB[2]); }
+
+    //NEW CODE
+    if((RGB[0] == RGB[1] == RGB[2]) && mode == PERLIN){
+      setMode(SOLID_COLOR)
+    }
+    //NEW CODE
 
     updateColorFromRGB();
   }
